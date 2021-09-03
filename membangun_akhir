@@ -10,5 +10,5 @@ ccache -o compression=true
 ccache -z
 
 . build/envsetup.sh
-lunch nad_juice-userdebug
+lunch nad_juice-eng
 mka nad -j8
