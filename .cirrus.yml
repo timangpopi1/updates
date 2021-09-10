@@ -13,6 +13,8 @@ task:
       - cd /tmp/cirrus-ci-build/ # Dump
       - wget -O ccache.tar.gz https://github.com/ccache/ccache/releases/download/v4.4/ccache-4.4.tar.gz
       - time tar xf ccache.tar.gz && rm -rf ccache.tar.gz
+      - cd /tmp/cirrus-ci-build/ccache/ && ./configure && ./make && sudo make install
+      - cd /tmp/cirrus-ci-build/
       - export CCACHE_DIR=/tmp/cirrus-ci-build/ccache
       - export CCACHE_EXEC=$(which ccache)
       - export USE_CCACHE=1
