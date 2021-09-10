@@ -20,6 +20,8 @@ task:
       - ccache -M 20G
       - ccache -o compression=true
       - ccache -z
+      - git clone --depth=1 https://github.com/fadlyas07/anu
+      - cd anu && mv * .. && cd ..
       - ./memantau
       - ./sinkronisasi
       - ./membangun_akhir
