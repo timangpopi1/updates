@@ -10,15 +10,14 @@ task:
       memory: 32G      
 
     mengunduh_ccache_background_script:
-      - cd /tmp/cirrus-ci-build/ # Dump
-      - wget -O ccache.tar.gz https://github.com/ccache/ccache/releases/download/v4.4/ccache-4.4.tar.gz
+      - cd $HOME
+      - wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1fJ1RH2UIWRYOVDQGrXqs2PyGRo6dq-' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1fJ1RH2UIWRYOVDQGrXqs2PyGRo6dq-" -O ccache.tar.gz  && rm -rf /tmp/cookies.txt
       - time tar xf ccache.tar.gz && rm -rf ccache.tar.gz
-      - cd /tmp/cirrus-ci-build/ccache/ && ./configure && ./make && sudo make install
-      - cd /tmp/cirrus-ci-build/
-      - export CCACHE_DIR=/tmp/cirrus-ci-build/ccache
+      - mkdir -p /tmp/cirrus-ci-build/main_dir
+      - export CCACHE_DIR=$HOME/ccache
       - export CCACHE_EXEC=$(which ccache)
       - export USE_CCACHE=1
-      - ccache -M 50G
+      - ccache -M 20G
       - ccache -o compression=true
       - ccache -z
 
