@@ -11,7 +11,7 @@ git clone -q -j64 https://github.com/Joaquin-000/vendor_xiaomi_juice -b 11 vendo
 git clone -q -j64 https://github.com/greenforce-project/kernel_xiaomi_citrus_sm6115 -b rvc kernel/xiaomi/juice --depth=1
 
 # TOOLCHAIN
-git clone -q -j64 https://gitlab.com/fadlyas07/clang-llvm --single-branch prebuilts/clang/host/linux-x86/clang-greenforce --depth=1
+git clone -q -j64 https://github.com/kdrag0n/proton-clang --single-branch prebuilts/clang/host/linux-x86/clang-greenforce --depth=1
 
 #HALS
 #rm -rf hardware/qcom-caf/sm8250/audio
