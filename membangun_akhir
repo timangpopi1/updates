@@ -2,13 +2,13 @@
 
 cd /tmp/cirrus-ci-build/main_dir
 
-export CCACHE_DIR=$HOME/ccache
+export CCACHE_DIR=/tmp/cirrus-ci-build/ccache
 export CCACHE_EXEC=$(which ccache)
 export USE_CCACHE=1
-ccache -M 20G
+ccache -M 50G
 ccache -o compression=true
 ccache -z
 
 . build/envsetup.sh
-lunch nad_juice-eng
-mka nad -j8
+lunch carbon_juice-userdebug
+make carbon -j$(nproc --all)

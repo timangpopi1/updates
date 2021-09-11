@@ -2,22 +2,22 @@
 
 cd /tmp/cirrus-ci-build/main_dir
 
-repo init -q --no-repo-verify --depth=1 -u https://github.com/NusantaraProject-ROM/android_manifest -b 11 -g default,-device,-mips,-darwin,-notdefault
-repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j8
+repo init -q --no-repo-verify --depth=1 -u https://github.com/CarbonROM/android.git -b cr-9.0 -g default,-device,-mips,-darwin,-notdefault
+repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j$(nproc --all)
 
 # DT/VT/KT
-git clone -q -j64 https://github.com/MiBengal-Development/Device_xiaomi_J -b Trying device/xiaomi/juice --depth=1
-git clone -q -j64 https://gitlab.com/I-n-o-k/vendor-juice -b master vendor/xiaomi/juice --depth=1
-git clone -q -j64 https://github.com/I-n-o-k/android_kernel_xiaomi_bengal -b 11.0 kernel/xiaomi/juice --depth=1
+git clone -q -j64 https://github.com/fadlyas07/device_xiaomi_juice -b carbon device/xiaomi/juice --depth=1
+git clone -q -j64 https://github.com/Joaquin-000/vendor_xiaomi_juice -b 11 vendor/xiaomi/juice --depth=1
+git clone -q -j64 https://github.com/greenforce-project/kernel_xiaomi_citrus_sm6115 -b rvc kernel/xiaomi/juice --depth=1
 
 # TOOLCHAIN
-git clone -q -j64 https://github.com/kdrag0n/proton-clang -b master prebuilts/clang/host/linux-x86/clang-proton --depth=1
+git clone -q -j64 https://gitlab.com/fadlyas07/clang-llvm --single-branch prebuilts/clang/host/linux-x86/clang-greenforce --depth=1
 
 #HALS
-rm -rf hardware/qcom-caf/sm8250/audio
-rm -rf hardware/qcom-caf/sm8250/display
-rm -rf hardware/qcom-caf/sm8250/media
-git clone -q -j64 https://github.com/sm6115-dev/hardware_qcom-caf_sm8250_audio.git --single-branch hardware/qcom-caf/sm8250/audio --depth=1
-git clone -q -j64 https://github.com/sm6115-dev/hardware_qcom-caf_sm8250_display --single-branch hardware/qcom-caf/sm8250/display --depth=1
-git clone -q -j64 https://github.com/sm6115-dev/hardware_qcom-caf_sm8250_media --single-branch hardware/qcom-caf/sm8250/media --depth=1
+#rm -rf hardware/qcom-caf/sm8250/audio
+#rm -rf hardware/qcom-caf/sm8250/display
+#rm -rf hardware/qcom-caf/sm8250/media
+#git clone -q -j64 https://github.com/sm6115-dev/hardware_qcom-caf_sm8250_audio.git --single-branch hardware/qcom-caf/sm8250/audio --depth=1
+#git clone -q -j64 https://github.com/sm6115-dev/hardware_qcom-caf_sm8250_display --single-branch hardware/qcom-caf/sm8250/display --depth=1
+#git clone -q -j64 https://github.com/sm6115-dev/hardware_qcom-caf_sm8250_media --single-branch hardware/qcom-caf/sm8250/media --depth=1
 

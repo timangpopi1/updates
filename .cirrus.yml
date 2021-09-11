@@ -10,18 +10,17 @@ task:
       memory: 32G      
 
     test_script:
-      - cd $HOME
       - wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1fJ__1RH2UIWRYOVDQGrXqs2PyGRo6dq-' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1fJ__1RH2UIWRYOVDQGrXqs2PyGRo6dq-" -O ccache.tar.gz  && rm -rf /tmp/cookies.txt
-      - time tar xf ccache.tar.gz && rm -rf ccache.tar.gz
+      - time tar -xvf ccache.tar.gz && rm -rf ccache.tar.gz
       - mkdir -p /tmp/cirrus-ci-build/main_dir
-      - export CCACHE_DIR=$HOME/ccache
+      - export CCACHE_DIR=/tmp/cirrus-ci-build/ccache
       - export CCACHE_EXEC=$(which ccache)
       - export USE_CCACHE=1
-      - ccache -M 20G
+      - ccache -M 50G
       - ccache -o compression=true
       - ccache -z
       - git clone --depth=1 https://github.com/fadlyas07/anu
-      - cd anu && mv * .. && cd ..
-      - ./sinkronisasi
-      - ./membangun_akhir
-      - ./mengunggah
+      - cd anu && mv * .. && cd .. && rm -rf anu
+      - bash sinkronisasi
+      - bash membangun_akhir
+      - bash mengunggah

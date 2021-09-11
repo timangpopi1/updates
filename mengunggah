@@ -1,9 +1,9 @@
 #!/bin/bash
 
 
-cd /tmp/cirrus-ci-build/
+cd /tmp/cirrus-ci-build/main_dir
 
-find_target=$(find Nusantara*.zip)
+find_target=$(find CARBON*juice*.zip)
 zip_path=/tmp/cirrus-ci-build/main_dir/out/target/product/juice/${find_target}
 curl -sL https://git.io/file-transfer | sh && ./transfer wet "$zip_path" >> link
 sleep 2
