@@ -9,15 +9,3 @@ repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync 
 git clone -q -j64 https://github.com/fadlyas07/device_xiaomi_juice -b xpe device/xiaomi/juice --depth=1
 git clone -q -j64 https://github.com/Joaquin-000/vendor_xiaomi_juice -b 11 vendor/xiaomi/juice --depth=1
 git clone -q -j64 https://github.com/greenforce-project/kernel_xiaomi_citrus_sm6115 -b rvc kernel/xiaomi/juice --depth=1
-
-# TOOLCHAIN
-#git clone -q -j64 https://github.com/kdrag0n/proton-clang --single-branch prebuilts/clang/host/linux-x86/clang-greenforce --depth=1
-
-#HALS
-#rm -rf hardware/qcom-caf/sm8250/audio
-#rm -rf hardware/qcom-caf/sm8250/display
-#rm -rf hardware/qcom-caf/sm8250/media
-#git clone -q -j64 https://github.com/sm6115-dev/hardware_qcom-caf_sm8250_audio.git --single-branch hardware/qcom-caf/sm8250/audio --depth=1
-#git clone -q -j64 https://github.com/sm6115-dev/hardware_qcom-caf_sm8250_display --single-branch hardware/qcom-caf/sm8250/display --depth=1
-#git clone -q -j64 https://github.com/sm6115-dev/hardware_qcom-caf_sm8250_media --single-branch hardware/qcom-caf/sm8250/media --depth=1
-
