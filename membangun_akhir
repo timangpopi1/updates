@@ -10,5 +10,5 @@ ccache -o compression=true
 ccache -z
 
 . build/envsetup.sh
-lunch carbon_juice-userdebug
-make carbon -j$(nproc --all)
+lunch xpe_juice-userdebug
+make bacon -j$(nproc --all)

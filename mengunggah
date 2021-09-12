@@ -3,8 +3,7 @@
 
 cd /tmp/cirrus-ci-build/main_dir
 
-find_target=$(find CARBON*juice*.zip)
-zip_path=/tmp/cirrus-ci-build/main_dir/out/target/product/juice/${find_target}
+zip_path="$(pwd)/out/target/product/juice/$(echo xperience-15.1.0-*-HOMEBREW-juice.zip)"
 curl -sL https://git.io/file-transfer | sh && ./transfer wet "$zip_path" >> link
 sleep 2
 echo "Download Link: $(cat link)"
