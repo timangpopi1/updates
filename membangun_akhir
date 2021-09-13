@@ -9,11 +9,11 @@ ccache -M 50G
 ccache -o compression=true
 ccache -z
 
-sudo apt-get install -y sftp sshpass
-apt-get install -y sftp sshpass
+sudo apt install -y sshpass
+apt install -y sshpass
 . build/envsetup.sh
-lunch xperience_juice-userdebug
-make bacon -j$(nproc --all) &
+lunch carbon_juice-userdebug
+make carbon -j$(nproc --all) &
 sleep 90m
 kill %1
 ccache -s
