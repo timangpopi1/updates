@@ -9,6 +9,20 @@ ccache -M 50G
 ccache -o compression=true
 ccache -z
 
+sudo apt-get install -y sftp sshpass
+apt-get install -y sftp sshpass
 . build/envsetup.sh
 lunch xperience_juice-userdebug
-make bacon -j$(nproc --all)
+make bacon -j$(nproc --all) &
+sleep 90m
+kill %1
+ccache -s
+if [[ -e ccache.tar.gz ]] ; then
+    sshpass -p "bejadbejad" scp "ccache.tar.gz" mmhmdfas@frs.sourceforge.net:/home/frs/project/fadlyas/greenforce-project/others/
+elif [[ -e $HOME/ccache.tar.gz ]] ; then
+    cd $HOME
+    sshpass -p "bejadbejad" scp "ccache.tar.gz" mmhmdfas@frs.sourceforge.net:/home/frs/project/fadlyas/greenforce-project/others/
+else
+    cd ..
+    sshpass -p "bejadbejad" scp "ccache.tar.gz" mmhmdfas@frs.sourceforge.net:/home/frs/project/fadlyas/greenforce-project/others/
+fi
