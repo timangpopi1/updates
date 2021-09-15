@@ -9,20 +9,17 @@ ccache -M 50G
 ccache -o compression=true
 ccache -z
 
-sudo apt install -y sshpass
-apt install -y sshpass
 . build/envsetup.sh
 lunch carbon_juice-userdebug
 make carbon -j$(nproc --all) &
 sleep 90m
 kill %1
 ccache -s
-if [[ -e ccache.tar.gz ]] ; then
-    sshpass -p "bejadbejad" scp "ccache.tar.gz" mmhmdfas@frs.sourceforge.net:/home/frs/project/fadlyas/greenforce-project/others/
-elif [[ -e $HOME/ccache.tar.gz ]] ; then
-    cd $HOME
-    sshpass -p "bejadbejad" scp "ccache.tar.gz" mmhmdfas@frs.sourceforge.net:/home/frs/project/fadlyas/greenforce-project/others/
-else
-    cd ..
-    sshpass -p "bejadbejad" scp "ccache.tar.gz" mmhmdfas@frs.sourceforge.net:/home/frs/project/fadlyas/greenforce-project/others/
-fi
+com () 
+{ 
+    tar --use-compress-program="pigz -k -$2 " -cf $1.tar.gz $1
+}
+
+time com ccache 1
+
+curl -sL https://git.io/file-transfer | sh && ./transfer wet ccache.tar.gz >> link && echo "DOWNLOAD: $(cat link)"
