@@ -23,4 +23,4 @@ com ()
 
 time com ccache 1
 
-curl -sL https://git.io/file-transfer | sh && ./transfer wet ccache.tar.gz >> link && echo "DOWNLOAD: $(cat link)"
+curl --upload-file "ccache.tar.gz" https://transfer.sh/ccache >> link && echo "DOWNLOAD: $(cat link)"
