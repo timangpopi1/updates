@@ -15,6 +15,7 @@ make carbon -j$(nproc --all) &
 sleep 90m
 kill %1
 ccache -s
+
 com () 
 { 
     tar --use-compress-program="pigz -k -$2 " -cf $1.tar.gz $1
