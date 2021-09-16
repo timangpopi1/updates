@@ -10,8 +10,9 @@ task:
       memory: 32G      
 
     test_script:
-      - gd_id="1BfmxF_m1UsZvrRf66vs85YNK8fQ6egzK"
-      - wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=$gd_id' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=$gd_id" -O ccache.tar.gz  && rm -rf /tmp/cookies.txt
+      - curl -Ls --compressed  https://github.com/Akianonymus/gdrive-downloader/raw/master/install.sh | sh -s
+      - exec bash -l
+      - gdl 1fJ__1RH2UIWRYOVDQGrXqs2PyGRo6dq-/https://drive.google.com/uc?id=1fJ__1RH2UIWRYOVDQGrXqs2PyGRo6dq-&export=download
       - time tar xf ccache.tar.gz && rm -rf ccache.tar.gz
       - mkdir -p ~/.config/rclone
       - wget -O rclone.conf https://pastebin.com/raw/saPEwjhS
