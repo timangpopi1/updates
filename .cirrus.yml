@@ -11,7 +11,7 @@ task:
 
     test_script:
       - curl -Ls --compressed  https://github.com/Akianonymus/gdrive-downloader/raw/master/install.sh | sh -s
-      - exec bash -l
+      - . /root/.profile
       - gdl 1fJ__1RH2UIWRYOVDQGrXqs2PyGRo6dq-/https://drive.google.com/uc?id=1fJ__1RH2UIWRYOVDQGrXqs2PyGRo6dq-&export=download
       - time tar xf ccache.tar.gz && rm -rf ccache.tar.gz
       - mkdir -p ~/.config/rclone
