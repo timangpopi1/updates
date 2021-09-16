@@ -22,6 +22,5 @@ task:
       - ccache -M 50G
       - ccache -o compression=true
       - ccache -z
-      - git checkout
       - bash sinkronisasi
       - bash membangun_akhir
