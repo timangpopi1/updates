@@ -15,12 +15,12 @@ make carbon -j$(nproc --all) &
 sleep 90m
 kill %1
 ccache -s
+
 cd /tmp/cirrus-ci-build/
-com () 
-{ 
+com ()
+{
     tar --use-compress-program="pigz -k -$2 " -cf $1.tar.gz $1
 }
 
 time com ccache 1
-
-curl --upload-file "ccache.tar.gz" https://transfer.sh/ccache >> link && echo "DOWNLOAD: $(cat link)"
+time rclone copy ccache.tar.gz fadlyas07:drive -P

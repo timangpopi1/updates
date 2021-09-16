@@ -5,13 +5,16 @@ task:
     name: builds
     timeout_in: 120m
     container:
-      image: inok2341/anu:latest
+      image: mhmmdfdlyas/dockerfile:r
       cpu: 8
       memory: 32G      
 
     test_script:
       - wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1fJ__1RH2UIWRYOVDQGrXqs2PyGRo6dq-' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1fJ__1RH2UIWRYOVDQGrXqs2PyGRo6dq-" -O ccache.tar.gz  && rm -rf /tmp/cookies.txt
       - time tar xf ccache.tar.gz && rm -rf ccache.tar.gz
+      - mkdir -p ~/.config/rclone
+      - wget -O rclone.conf https://pastebin.com/raw/saPEwjhS
+      - mv rclone.conf ~/.config/rclone/
       - mkdir -p /tmp/cirrus-ci-build/main_dir
       - export CCACHE_DIR=/tmp/cirrus-ci-build/ccache
       - export CCACHE_EXEC=$(which ccache)
@@ -22,4 +25,3 @@ task:
       - git checkout
       - bash sinkronisasi
       - bash membangun_akhir
-      - bash mengunggah
