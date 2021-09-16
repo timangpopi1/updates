@@ -10,16 +10,21 @@ task:
       memory: 32G      
 
     ccache_script:
-      - curl -Ls --compressed  https://github.com/Akianonymus/gdrive-downloader/raw/master/install.sh | sh -s
-      - . /root/.profile
-      - gdl 1fJ__1RH2UIWRYOVDQGrXqs2PyGRo6dq-/https://drive.google.com/uc?id=1fJ__1RH2UIWRYOVDQGrXqs2PyGRo6dq-&export=download
-      - ls
+      - cd ~/
+      - curl -Ls --compressed https://github.com/Akianonymus/gdrive-downloader/raw/master/install.sh | sh -s
+      - . /.profile
 
-    test_script:
-      - time tar xf ccache.tar.gz && rm -rf ccache.tar.gz
+    download_ccache_script:
+      - cd /tmp/cirrus-ci-build/
+      - gdl "1fJ__1RH2UIWRYOVDQGrXqs2PyGRo6dq-/https://drive.google.com/uc?id=1fJ__1RH2UIWRYOVDQGrXqs2PyGRo6dq-&export=download"
+      - [[ -e ccache.tar.gz ]] && time tar xf ccache.tar.gz && rm -rf ccache.tar.gz
+
+    setup_rclone_script:
       - mkdir -p ~/.config/rclone
       - wget -O rclone.conf https://pastebin.com/raw/saPEwjhS
       - mv rclone.conf ~/.config/rclone/
+
+    run_script:
       - mkdir -p /tmp/cirrus-ci-build/main_dir
       - export CCACHE_DIR=/tmp/cirrus-ci-build/ccache
       - export CCACHE_EXEC=$(which ccache)
