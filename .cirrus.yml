@@ -12,7 +12,7 @@ task:
     ccache_script:
       - cd ~/
       - curl -Ls --compressed https://github.com/Akianonymus/gdrive-downloader/raw/master/install.sh | sh -s
-      - . /.profile
+      - . /root/.profile
 
     download_ccache_script:
       - cd /tmp/cirrus-ci-build/
