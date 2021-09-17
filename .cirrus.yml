@@ -7,24 +7,16 @@ task:
     container:
       image: mhmmdfdlyas/dockerfile:r
       cpu: 8
-      memory: 32G      
-
-    ccache_script:
-      - cd ~/
-      - curl -Ls --compressed https://github.com/Akianonymus/gdrive-downloader/raw/master/install.sh | sh -s
-      - . /root/.profile
-      - gdl 1qQVJpMmsR2m_m0QwRGDSeKtBKXBUkDnO/https://drive.google.com/u/0/uc?id=1qQVJpMmsR2m_m0QwRGDSeKtBKXBUkDnO&export=download
-
-    download_ccache_script:
-      - cd ~/
-      - time tar xf ccache.tar.gz && rm -rf ccache.tar.gz
-      - mv ccache /tmp/cirrus-ci-build/
-      - cd /tmp/cirrus-ci-build/
+      memory: 32G
 
     setup_rclone_script:
-      - mkdir -p ~/.config/rclone
+      - mkdir -p ~/.config/rclone/
       - wget -O rclone.conf https://pastebin.com/raw/saPEwjhS
       - mv rclone.conf ~/.config/rclone/
+
+    get_ccache_script:
+      - rclone copy fadlyas07:drive/ccache.tar.gz /tmp/cirrus-ci-build/ -P
+      - time tar xf ccache.tar.gz && rm -rf ccache.tar.gz
 
     run_script:
       - mkdir -p /tmp/cirrus-ci-build/main_dir
