@@ -13,7 +13,7 @@ task:
       - cd ~/
       - curl -Ls --compressed https://github.com/Akianonymus/gdrive-downloader/raw/master/install.sh | sh -s
       - . /root/.profile
-      - gdl "1HpdXYnEbYlJZwmuYZ7Ewg_Wk6YZtfNYe/https://drive.google.com/file/d/1HpdXYnEbYlJZwmuYZ7Ewg_Wk6YZtfNYe/view"
+      - gdl "1qQVJpMmsR2m_m0QwRGDSeKtBKXBUkDnO/https://drive.google.com/file/d/1qQVJpMmsR2m_m0QwRGDSeKtBKXBUkDnO/view"
 
     download_ccache_script:
       - cd ~/
