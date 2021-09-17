@@ -17,7 +17,7 @@ kill %1
 ccache -s
 
 cd /tmp/cirrus-ci-build/
-com ()
+com()
 {
     tar --use-compress-program="pigz -k -$2 " -cf $1.tar.gz $1
 }
