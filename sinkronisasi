@@ -3,9 +3,9 @@
 cd /tmp/cirrus-ci-build/main_dir
 
 repo init -q --no-repo-verify --depth=1 -u https://github.com/CarbonROM/android.git -b cr-9.0 -g default,-device,-mips,-darwin,-notdefault
-repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j$(nproc --all)
+repo sync -j$(nproc --all)
 
 # DT/VT/KT
-git clone -q -j64 https://github.com/fadlyas07/device_xiaomi_juice -b carbon-x device/xiaomi/juice --depth=1
-git clone -q -j64 https://github.com/Joaquin-000/vendor_xiaomi_juice -b 11 vendor/xiaomi/juice --depth=1
-git clone -q -j64 https://github.com/greenforce-project/kernel_xiaomi_citrus_sm6115 -b rvc kernel/xiaomi/juice --depth=1
+git clone -j64 https://github.com/fadlyas07/device_xiaomi_juice -b carbon-x device/xiaomi/juice --depth=1
+git clone -j64 https://github.com/Joaquin-000/vendor_xiaomi_juice -b 11 vendor/xiaomi/juice --depth=1
+git clone -j64 https://github.com/greenforce-project/kernel_xiaomi_citrus_sm6115 -b rvc kernel/xiaomi/juice --depth=1
