@@ -12,10 +12,7 @@ ccache -z
 . build/envsetup.sh
 lunch carbon_juice-userdebug
 make carbon -j$(nproc --all)
-out_dir_res="/tmp/cirrus-ci-build/main_dir/out/target/product/juice"
-rm -rf $out_dir_res/$(echo *ota*.zip)
-zip_path="$out_dir_res/$(echo CAR*juice*.zip)"
-time rclone copy "$zip_path" fadlyas07:drive -P
+time rclone copy "$(echo out/target/product/juice/CARBON-CR-9.0-R-UNOFFICIAL-juice-*.zip)" fadlyas07:drive -P
 #make carbon -j$(nproc --all) &
 #sleep 90m
 #kill %1
