@@ -16,15 +16,19 @@ task:
 
     get_ccache_script:
       - rclone copy fadlyas07:drive/ccache.tar.gz /tmp/cirrus-ci-build/ -P
-      - time tar xf ccache.tar.gz && rm -rf ccache.tar.gz
+      - tar xf ccache.tar.gz && rm -rf ccache.tar.gz
 
     run_script:
       - mkdir -p /tmp/cirrus-ci-build/main_dir
       - export CCACHE_DIR=/tmp/cirrus-ci-build/ccache
       - export CCACHE_EXEC=$(which ccache)
       - export USE_CCACHE=1
-      - ccache -M 20G
+      - ccache -M 50G
       - ccache -o compression=true
       - ccache -z
+
+    sync_script:
       - bash sinkronisasi
+
+    build_script:
       - bash membangun_akhir
