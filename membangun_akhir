@@ -14,7 +14,7 @@ lunch carbon_juice-userdebug
 #make carbon -j$(nproc --all)
 #rclone copy "$(echo out/target/product/juice/CARBON-CR-9.0-R-UNOFFICIAL-juice-*.zip)" fadlyas07:drive -P
 make carbon -j$(nproc --all) &
-sleep 100m
+sleep 90m
 kill %1
 ccache -s
 
