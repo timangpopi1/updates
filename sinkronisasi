@@ -9,4 +9,4 @@ repo sync -v -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sy
 git clone -j64 https://github.com/fadlyas07/device_xiaomi_juice -b carbon-x device/xiaomi/juice --depth=1
 git clone -j64 https://github.com/Joaquin-000/vendor_xiaomi_juice -b 11 vendor/xiaomi/juice --depth=1
 git clone -j64 https://github.com/greenforce-project/kernel_xiaomi_citrus_sm6115 -b rvc kernel/xiaomi/juice --depth=1
-git clone -j64 https://github.com/fadlyas07/android_prebuilts_clang_host_linux-x86_clang-r428724 -b main prebuilts/clang/host/linux-x86/clang-r428724
+git clone -j64 https://github.com/timangpopi1/clang -b main prebuilts/clang/host/linux-x86/clang-custom --depth=1

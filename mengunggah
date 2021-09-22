@@ -1,9 +1,0 @@
-#!/bin/bash
-
-
-cd /tmp/cirrus-ci-build/main_dir
-
-zip_path="$(pwd)/out/target/product/juice/$(echo C*juice.zip)"
-curl -sL https://git.io/file-transfer | sh && ./transfer wet "$zip_path" >> link
-sleep 2
-echo "Download Link: $(cat link)"
