@@ -11,11 +11,11 @@ ccache -z
 
 . build/envsetup.sh
 lunch carbon_juice-userdebug
-#make carbon -j$(nproc --all)
-#rclone copy "$(echo out/target/product/juice/CARBON-CR-9.0-R-UNOFFICIAL-juice-*.zip)" fadlyas07:drive -P
-make carbon -j$(nproc --all) &
-sleep 90m
-kill %1
+make carbon -j$(nproc --all)
+rclone copy "$(echo out/target/product/juice/CARBON-CR-9.0-R-UNOFFICIAL-juice-*.zip)" fadlyas07:drive -P
+#make carbon -j$(nproc --all) &
+#sleep 90m
+#kill %1
 ccache -s
 
 cd /tmp/cirrus-ci-build/
@@ -24,5 +24,5 @@ __make_tar ()
    tar --use-compress-program="pigz -k -$2 " -cf $1.tar.gz $1
 }
 
-__make_tar ccache 1
-rclone copy ccache.tar.gz fadlyas07:drive -P
+#__make_tar ccache 1
+#rclone copy ccache.tar.gz fadlyas07:drive -P
