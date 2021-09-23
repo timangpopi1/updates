@@ -12,7 +12,7 @@ ccache -z
 no_ccache=0
 . build/envsetup.sh
 lunch carbon_juice-userdebug
-if [[ no_ccache == 1 ]] then ;
+if [[ no_ccache == 1 ]] ; then
     make carbon -j$(nproc --all)
     rclone copy "$(echo out/target/product/juice/CARBON-CR-9.0-R-UNOFFICIAL-juice-*.zip)" fadlyas07:drive -P
 else
