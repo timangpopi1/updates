@@ -9,13 +9,17 @@ ccache -M 20G
 ccache -o compression=true
 ccache -z
 
+no_ccache=0
 . build/envsetup.sh
 lunch carbon_juice-userdebug
-make carbon -j$(nproc --all)
-rclone copy "$(echo out/target/product/juice/CARBON-CR-9.0-R-UNOFFICIAL-juice-*.zip)" fadlyas07:drive -P
-#make carbon -j$(nproc --all) &
-#sleep 90m
-#kill %1
+if [[ no_ccache == 1 ]] then ;
+    make carbon -j$(nproc --all)
+    rclone copy "$(echo out/target/product/juice/CARBON-CR-9.0-R-UNOFFICIAL-juice-*.zip)" fadlyas07:drive -P
+else
+    make carbon -j$(nproc --all) &
+    sleep 90m
+    kill %1
+fi
 ccache -s
 
 cd /tmp/cirrus-ci-build/
