@@ -9,7 +9,7 @@ ccache -M 20G
 ccache -o compression=true
 ccache -z
 
-no_ccache=1
+no_ccache=0
 . build/envsetup.sh
 lunch carbon_juice-userdebug
 if [[ "$no_ccache" == 1 ]] ; then
