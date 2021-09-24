@@ -2,12 +2,11 @@
 
 cd /tmp/cirrus-ci-build/main_dir
 
-repo init --no-repo-verify -q --depth=1 -u https://github.com/CarbonROM/android.git -b cr-9.0 -g default,-device,-mips,-darwin,-notdefault
+repo init --no-repo-verify --depth=1 -u https://github.com/CarbonROM/android.git -b cr-9.0 -g default,-device,-mips,-darwin,-notdefault
 repo sync -v -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j$(nproc --all) || repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j$(nproc --all)
 
 # DT/VT/KT
-git clone -q https://github.com/fadlyas07/device_xiaomi_juice -b carbon-x device/xiaomi/juice --depth=1
-git clone -q https://github.com/Joaquin-000/vendor_xiaomi_juice -b 11 vendor/xiaomi/juice --depth=1
-git clone -q https://github.com/greenforce-project/kernel_xiaomi_citrus_sm6115 -b rvc kernel/xiaomi/juice --depth=1
-git clone -q https://github.com/fadlyas07/android_prebuilts_clang_host_linux-x86_clang-r428724 -b main prebuilts/clang/host/linux-x86/clang-r428724 --depth=1
-rm -rf device/xiaomi/juice/.git vendor/xiaomi/juice/.git kernel/xiaomi/juice/.git prebuilts/clang/host/linux-x86/clang-r428724/.git
+git clone -j64 https://github.com/fadlyas07/device_xiaomi_juice -b carbon-x device/xiaomi/juice --depth=1
+git clone -j64 https://github.com/Joaquin-000/vendor_xiaomi_juice -b 11 vendor/xiaomi/juice --depth=1
+git clone -j64 https://github.com/greenforce-project/kernel_xiaomi_citrus_sm6115 -b rvc kernel/xiaomi/juice --depth=1
+git clone -j64 https://github.com/Nicklas373/aosp-clang -b r383902 prebuilts/clang/host/linux-x86/clang-r428724 --depth=1
