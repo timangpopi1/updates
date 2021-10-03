@@ -9,7 +9,7 @@ ccache -M 20G
 ccache -o compression=true
 ccache -z
 
-no_ccache=1
+no_ccache=0
 . build/envsetup.sh
 lunch carbon_juice-userdebug
 if [[ "$no_ccache" == 1 ]] ; then
@@ -22,11 +22,11 @@ else
 fi
 ccache -s
 
-#cd /tmp/cirrus-ci-build/
+cd /tmp/cirrus-ci-build/
 __make_tar ()
 {
    tar --use-compress-program="pigz -k -$2 " -cf $1.tar.gz $1
 }
 
-#__make_tar ccache 1
-#rclone copy ccache.tar.gz fadlyas07:drive -P
+__make_tar ccache 1
+rclone copy ccache.tar.gz fadlyas07:drive -P
