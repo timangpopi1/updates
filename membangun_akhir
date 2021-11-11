@@ -8,6 +8,7 @@ export USE_CCACHE=1
 ccache -M 20G
 ccache -o compression=true
 ccache -z
+export USER=fadlyas.personal
 
 no_ccache=0
 . build/envsetup.sh
