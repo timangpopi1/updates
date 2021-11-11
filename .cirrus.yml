@@ -1,8 +1,5 @@
-env: 
-    CIRRUS_CLONE_DEPTH: 1
-
 task:
-    name: builds
+    name: kontol
     timeout_in: 120m
     container:
       image: mhmmdfdlyas/dockerfile:r
