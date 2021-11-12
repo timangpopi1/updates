@@ -11,14 +11,8 @@ task:
       - mv rclone.conf ~/.config/rclone/
       - rclone copy fadlyas07:drive/ccache.tar.gz /tmp/cirrus-ci-build/ -P
       - tar xf ccache.tar.gz && rm -rf ccache.tar.gz
-    run_script:
-      - mkdir -p /tmp/cirrus-ci-build/main_dir
-      - export CCACHE_DIR=/tmp/cirrus-ci-build/ccache
-      - export CCACHE_EXEC=$(which ccache)
-      - export USE_CCACHE=1
-      - ccache -M 20G
-      - ccache -o compression=true
-      - ccache -z
+      - echo make main dir before continue to the next task
+      - mkdir -p /tmp/cirrus-ci-build/main_dir && echo done, main dir already created ...
     sync_script:
       - bash sinkronisasi
     build_script:
