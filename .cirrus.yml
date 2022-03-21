@@ -6,13 +6,14 @@ task:
       cpu: 8
       memory: 32G
     setup_rclone_script:
-     - mkdir -p ~/.config/rclone/
-     - wget -O rclone.conf https://pastebin.com/raw/saPEwjhS
-     - mv rclone.conf ~/.config/rclone/
-     - rclone copy fadlyas07:drive/ccache.tar.gz /tmp/cirrus-ci-build/ -P
-     - tar -xf ccache.tar.gz && rm -rf ccache.tar.gz
-     - mkdir -p /tmp/cirrus-ci-build/main_dir
+      - mkdir -p ~/.config/rclone/
+      - wget -O rclone.conf https://pastebin.com/raw/saPEwjhS
+      - mv rclone.conf ~/.config/rclone/
+      - rclone copy fadlyas07:drive/ccache.tar.gz /tmp/cirrus-ci-build/ -P
+      - tar -xf ccache.tar.gz && rm -rf ccache.tar.gz && mkdir -p /tmp/cirrus-ci-build/main_dir
+
    sync_script:
      - bash sinkronisasi
+
    build_script:
      - bash membangun_akhir
