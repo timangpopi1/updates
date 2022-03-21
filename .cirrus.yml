@@ -1,19 +1,21 @@
 task:
-    name: builds
-    timeout_in: 120m
-    container:
+  name: "uwu"
+  timeout_in: 480m  
+  container:
       image: mhmmdfdlyas/dockerfile:r
       cpu: 8
       memory: 32G
-    setup_rclone_script:
-      - mkdir -p ~/.config/rclone/
-      - wget -O rclone.conf https://pastebin.com/raw/saPEwjhS
-      - mv rclone.conf ~/.config/rclone/
-      - rclone copy fadlyas07:drive/ccache.tar.gz /tmp/cirrus-ci-build/ -P
-      - tar -xf ccache.tar.gz && rm -rf ccache.tar.gz && mkdir -p /tmp/cirrus-ci-build/main_dir
+        
+  Setup_script:
+       - mkdir -p ~/.config/rclone/ /tmp/cirrus-ci-build/main_dir/
+       - export DEBIAN_FRONTEND=noninteractive
+       - wget -O rclone.conf https://pastebin.com/raw/saPEwjhS
+       - mv rclone.conf ~/.config/rclone/
+       - rclone copy fadlyas07:drive/ccache.tar.gz /tmp/cirrus-ci-build/ -P
+       - tar xf ccache.tar.gz && rm -rf ccache.tar.gz
+  
+  Sync_script:
+      - bash sinkronisasi
 
-   sync_script:
-     - bash sinkronisasi
-
-   build_script:
-     - bash membangun_akhir
+  Build_script:
+      - bash membangun_akhir
