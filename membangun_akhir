@@ -12,12 +12,12 @@ ccache -s
 export USER=CarbonOS
 export HOSTNAME=greenforce-project
 
-detect_ccache=$(cat ccache)
+w_ccache="$1"
 . build/envsetup.sh
 lunch carbon_juice-userdebug
-if [[ "$detect_ccache" != 1 ]] ; then
+if [[ "$w_ccache" != "1" ]] ; then
     make carbon -j$(nproc --all)
-    rclone copy "$(echo out/target/product/juice/CARBON*UNOFFICIAL*juice*.zip)" fadlyas07:drive -P
+    rclone copy "$(echo out/target/product/juice/CR-10.0-S-UNOFFICIAL-juice*.zip)" fadlyas07:drive -P
 else
     ccache -M 8G -F 0
     make carbon -j$(nproc --all) &
