@@ -2,10 +2,11 @@
 
 cd /tmp/cirrus-ci-build/main_dir
 
-repo init --no-repo-verify --depth=1 -u https://github.com/CarbonROM/android.git -b cr-9.0 -g default,-device,-mips,-darwin,-notdefault
+repo init --no-repo-verify --depth=1 -u https://github.com/CarbonROM/android.git -b cr-10.0 -g default,-device,-mips,-darwin,-notdefault
 repo sync -v -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j$(nproc --all) || repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j$(nproc --all)
 
 # DT/VT/KT
-git clone -j64 https://github.com/fadlyas07/device_xiaomi_juice -b rvc device/xiaomi/juice --depth=1
-git clone -j64 https://gitlab.com/I-n-o-k/vendor-lime -b 11 vendor/xiaomi/juice --depth=1
-git clone -j64 https://github.com/greenforce-project/kernel_xiaomi_citrus_sm6115 -b rvc-inline kernel/xiaomi/juice --depth=1
+git clone -j64 https://github.com/greenforce-project/kernel_xiaomi_citrus_sm6115 -b rvc-inline kernel/xiaomi/juice/ --depth=1
+git clone -j64 https://github.com/NusantaraROM-Devices/vendor_xiaomi_juice -b 12 vendor/xiaomi/juice/ --depth=1
+git clone -j64 https://github.com/greenforce-project/device_xiaomi_juice -b 12 device/xiaomi/juice/ --depth=1
+git clone -j64 https://github.com/greenforce-project/clang-llvm.git -b main prebuilts/clang/host/linux-x86/clang-llvm/ --depth=1

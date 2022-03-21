@@ -5,30 +5,28 @@ cd /tmp/cirrus-ci-build/main_dir
 export CCACHE_DIR=/tmp/cirrus-ci-build/ccache
 export CCACHE_EXEC=$(which ccache)
 export USE_CCACHE=1
-ccache -M 20G
+ccache -M 20G -F 0
 ccache -o compression=true
 ccache -z
 ccache -s
-export USER=fadlyas.personal
+export USER=CarbonOS
+export HOSTNAME=greenforce-project
 
-no_ccache=0
+detect_ccache=$(cat ccache)
 . build/envsetup.sh
 lunch carbon_juice-userdebug
-if [[ "$no_ccache" == 1 ]] ; then
+if [[ "$detect_ccache" != 1 ]] ; then
     make carbon -j$(nproc --all)
-    rclone copy "$(echo out/target/product/juice/CARBON-CR-9.0-R-UNOFFICIAL-juice-*.zip)" fadlyas07:drive -P
+    rclone copy "$(echo out/target/product/juice/CARBON*UNOFFICIAL*juice*.zip)" fadlyas07:drive -P
 else
+    ccache -M 8G -F 0
     make carbon -j$(nproc --all) &
-    sleep 90m
+    sleep 100m
     kill %1
 fi
 ccache -s
 
-cd /tmp/cirrus-ci-build/
-__make_tar ()
-{
-   tar --use-compress-program="pigz -k -$2 " -cf $1.tar.gz $1
-}
-
-__make_tar ccache 1
+cd ..
+name="ccache.tar.gz"
+tar -czf "$name" ccache
 rclone copy ccache.tar.gz fadlyas07:drive -P
