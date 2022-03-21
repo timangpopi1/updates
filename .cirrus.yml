@@ -1,5 +1,5 @@
 task:
-    name: meh
+    name: ok
     timeout_in: 120m
     container:
       image: mhmmdfdlyas/dockerfile:r
