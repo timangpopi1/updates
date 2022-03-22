@@ -12,6 +12,7 @@ ccache -s
 export USER=CarbonOS
 export HOSTNAME=greenforce-project
 
+rm -rf device/generic/art device/generic/common device/google/cuttlefish device/google/cuttlefish_prebuilts
 w_ccache="$1"
 . build/envsetup.sh
 lunch carbon_juice-userdebug
