@@ -12,7 +12,7 @@ task:
        - wget -O rclone.conf https://pastebin.com/raw/saPEwjhS
        - mv rclone.conf ~/.config/rclone/
        - rclone copy fadlyas07:drive/ccache.tar.gz /tmp/cirrus-ci-build/ -P
-       - tar -xvf ccache.tar.gz && rm -rf ccache.tar.gz
+       - tar xf ccache.tar.gz && rm -rf ccache.tar.gz
 
   Sync_script:
       - bash sinkronisasi
